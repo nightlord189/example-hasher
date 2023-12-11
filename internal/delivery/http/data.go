@@ -2,6 +2,7 @@ package http
 
 import (
 	"fmt"
+
 	"github.com/nightlord189/example-hasher/internal/entity"
 )
 

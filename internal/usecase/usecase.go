@@ -3,12 +3,12 @@ package usecase
 import (
 	"context"
 	"fmt"
+
 	"github.com/nightlord189/example-hasher/internal/entity"
 	"github.com/nightlord189/example-hasher/pkg"
 )
 
-type Usecase struct {
-}
+type Usecase struct{}
 
 func New() *Usecase {
 	return &Usecase{}

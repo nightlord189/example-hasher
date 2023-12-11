@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"context"
+
 	"github.com/nightlord189/example-hasher/internal/entity"
 )
 

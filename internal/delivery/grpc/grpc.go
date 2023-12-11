@@ -3,11 +3,12 @@ package grpc
 import (
 	"context"
 	"fmt"
+	"net"
+
 	"github.com/nightlord189/example-hasher/internal/entity"
 	"github.com/rs/zerolog"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/grpclog"
-	"net"
 )
 
 type Handler struct {
@@ -24,7 +25,6 @@ func New(port int, uc IUsecase) *Handler {
 
 func (h *Handler) Run() error {
 	listener, err := net.Listen("tcp", fmt.Sprintf(":%d", h.Port))
-
 	if err != nil {
 		grpclog.Fatalf("failed to listen: %v", err)
 	}
@@ -70,5 +70,4 @@ func (h *Handler) GetHashes(ctx context.Context, request *HashRequest) (response
 }
 
 func (h *Handler) mustEmbedUnimplementedHasherServer() {
-
 }

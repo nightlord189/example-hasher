@@ -4,13 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/nightlord189/example-hasher/internal/entity"
-	"github.com/rs/zerolog/log"
 	"io"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
+	"github.com/nightlord189/example-hasher/internal/entity"
+	"github.com/rs/zerolog/log"
 )
 
 type Handler struct {

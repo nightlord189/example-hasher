@@ -3,13 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/nightlord189/example-hasher/internal/delivery/grpc"
-	"github.com/nightlord189/example-hasher/pkg/log"
-	"github.com/rs/zerolog"
+	stdLog "log"
 
 	"github.com/nightlord189/example-hasher/internal/config"
+	"github.com/nightlord189/example-hasher/internal/delivery/grpc"
 	"github.com/nightlord189/example-hasher/internal/usecase"
-	stdLog "log"
+	"github.com/nightlord189/example-hasher/pkg/log"
+	"github.com/rs/zerolog"
 )
 
 func main() {

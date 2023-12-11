@@ -2,8 +2,9 @@ package grpc
 
 import (
 	"fmt"
-	"github.com/nightlord189/example-hasher/internal/entity"
 	"strings"
+
+	"github.com/nightlord189/example-hasher/internal/entity"
 )
 
 func (r *HashRequestItem) toEntity() (entity.HashRequestItem, error) {

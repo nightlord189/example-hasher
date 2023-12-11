@@ -3,17 +3,18 @@ package main
 import (
 	"context"
 	"fmt"
+
 	grpc2 "github.com/nightlord189/example-hasher/internal/delivery/grpc"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/grpclog"
 )
 
 func main() {
 	opts := []grpc.DialOption{
-		grpc.WithInsecure(),
+		grpc.WithTransportCredentials(insecure.NewCredentials()),
 	}
 	conn, err := grpc.Dial("127.0.0.1:5300", opts...)
-
 	if err != nil {
 		grpclog.Fatalf("fail to dial: %v", err)
 	}
@@ -36,7 +37,6 @@ func main() {
 		},
 	}
 	response, err := client.GetHashes(context.Background(), request)
-
 	if err != nil {
 		grpclog.Fatalf("fail to dial: %v", err)
 	}

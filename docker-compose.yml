@@ -6,9 +6,4 @@ services:
     build: ./
     ports:
       - 8080:8080
-      -
-    depends_on:
-      mongodb:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - 5300:5300

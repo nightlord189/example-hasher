@@ -3,10 +3,13 @@ package grpc
 import (
 	"fmt"
 	"github.com/nightlord189/example-hasher/internal/entity"
+	"strings"
 )
 
 func (r *HashRequestItem) toEntity() (entity.HashRequestItem, error) {
-	hashTypeParsed, err := entity.ParseHashType(r.GetType().String())
+	typeStr := strings.Replace(r.GetType().String(), "HASH_", "", 1)
+
+	hashTypeParsed, err := entity.ParseHashType(typeStr)
 	if err != nil {
 		return entity.HashRequestItem{}, fmt.Errorf("parse hash_type error: %w", err)
 	}

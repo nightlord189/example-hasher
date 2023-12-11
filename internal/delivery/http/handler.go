@@ -11,17 +11,16 @@ import (
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
-	"github.com/nightlord189/example-hasher/internal/config"
 )
 
 type Handler struct {
-	Config  config.Config
+	Port    int
 	Usecase IUsecase
 }
 
-func New(cfg config.Config, uc IUsecase) *Handler {
+func New(port int, uc IUsecase) *Handler {
 	return &Handler{
-		Config:  cfg,
+		Port:    port,
 		Usecase: uc,
 	}
 }
@@ -34,7 +33,7 @@ func (h *Handler) Run() error {
 
 	r.Post("/api/hash", h.GetHashes)
 
-	return http.ListenAndServe(fmt.Sprintf(":%d", h.Config.HTTPPort), r)
+	return http.ListenAndServe(fmt.Sprintf(":%d", h.Port), r)
 }
 
 func (h *Handler) GetHashes(w http.ResponseWriter, r *http.Request) {

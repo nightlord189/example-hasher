@@ -3,11 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/nightlord189/example-hasher/internal/delivery/grpc"
 	"github.com/nightlord189/example-hasher/pkg/log"
 	"github.com/rs/zerolog"
 
 	"github.com/nightlord189/example-hasher/internal/config"
-	"github.com/nightlord189/example-hasher/internal/delivery/http"
 	"github.com/nightlord189/example-hasher/internal/usecase"
 	stdLog "log"
 )
@@ -29,7 +29,7 @@ func main() {
 
 	usecaseInst := usecase.New()
 
-	handler := http.New(cfg, usecaseInst)
+	handler := grpc.New(cfg.GRPCPort, usecaseInst)
 
 	zerolog.Ctx(ctx).Info().Msgf("running grpc handler on port %d", cfg.GRPCPort)
 

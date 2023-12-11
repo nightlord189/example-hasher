@@ -12,7 +12,7 @@ RUN update-ca-certificates
 
 COPY . .
 
-RUN GO111MODULE=on CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o ./cmd/app/main ./cmd/app
+RUN GO111MODULE=on CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} go build -o ./cmd/grpc-server/main ./cmd/grpc-server
 
 FROM --platform=${TARGETPLATFORM:-linux/amd64} alpine:3.18.0
 

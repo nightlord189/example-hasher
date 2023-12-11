@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  grpc-server:
+    image: example-hasher-server:latest
+    build: ./
+    ports:
+      - 8080:8080
+      -
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

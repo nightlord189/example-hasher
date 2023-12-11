@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package hasher;
+
+option go_package = "github.com/nightlord189/example-hasher/internal/delivery/grpc";
+
+enum HashType {
+  HASH_UNSPECIFIED = 0;
+  HASH_SHA256 = 1;
+  HASH_SHA512 = 2;
+}
+
+service Hasher {
+  rpc GetHashes(HashRequest) returns (HashResponse) {}
+}
+
+message HashRequest {
+  repeated HashRequestItem items = 1;
+}
+
+message HashRequestItem {
+  string id = 1;
+  HashType type = 2;
+  string data = 3;
+}
+
+message HashResponse {
+  string message = 1;
+  repeated HashResponseItem items = 2;
+}
+
+message HashResponseItem {
+  string id = 1;
+  string result = 2;
+}
